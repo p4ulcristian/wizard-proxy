@@ -1,11 +1,11 @@
-# Use the official Nginx image from Docker Hub
-FROM nginx:alpine
+# Use the official Caddy image from the Docker Hub
+FROM caddy:latest
 
-# Copy the custom Nginx configuration file to the container
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copy the Caddyfile to the container
+COPY Caddyfile /etc/caddy/Caddyfile
 
-# Expose port 80 to the outside world
+# Expose port 80
 EXPOSE 80
 
-# Start Nginx when the container starts
-CMD ["nginx", "-g", "daemon off;"]
+# Start Caddy
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
