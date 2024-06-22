@@ -1,3 +1,0 @@
-wizard-dev.railway.internal {
-    reverse_proxy wizard-proxy-production.up.railway.app:4000
-}

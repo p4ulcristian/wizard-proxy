@@ -1,11 +1,9 @@
-# Use the official Caddy image from the Docker Hub
 FROM caddy:latest
 
-# Copy the Caddyfile to the container
-COPY Caddyfile /etc/caddy/Caddyfile
+RUN apk add --no-cache ncurses
 
-# Expose port 80
-EXPOSE 80
+COPY template.caddyfile ./
 
-# Start Caddy
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
+COPY --chmod=755 start.sh ./
+
+CMD ["sh", "start.sh"]
